@@ -1,0 +1,45 @@
+.container {
+  position: relative;
+  margin-top: 4.72rem;
+  margin-bottom: 4rem;
+}
+
+.inputSearch {
+  padding: 7px;
+  border-radius: 0.1rem;
+  border: none;
+  width: 150px;
+  font-family: 'Roboto Slab', serif;
+  caret-color: rgb(240, 41, 6);
+}
+.inputSearch:focus {
+  outline: none;
+}
+
+.btnSearch {
+  font-weight: 500;
+  font-family: 'Roboto Slab', serif;
+  padding: 7px;
+  border: transparent;
+  border: none;
+  border-radius: 0.2rem;
+  background-image: linear-gradient(#f5b7b1, #cb4335);
+  cursor: pointer;
+  color: rgb(32, 29, 29);
+  transition-duration: 1.6s;
+}
+
+.btnSearch:hover {
+  color: white;
+  background-image: linear-gradient(#e69d96, #5f1007);
+  transition-duration: 1.6s;
+}
+.btnSearch:active {
+  transform: scale(0.99);
+}
+
+.error {
+  position: absolute;
+  top: 15px;
+  color: #dbccca;
+}

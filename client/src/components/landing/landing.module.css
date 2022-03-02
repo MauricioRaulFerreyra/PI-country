@@ -1,0 +1,50 @@
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  background-image: url('https://c.tenor.com/t9G5ZkLMlccAAAAC/earth-planet.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.containerTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.title {
+  position: relative;
+  top: -5rem;
+  font-size: 3.7rem;
+  font-weight: 1000;
+  font-family: 'Roboto Slab', serif;
+  color: rgb(153, 146, 201);
+  text-align: left;
+}
+
+.btnHome {
+  font-weight: 800;
+  font-family: 'Roboto Slab', serif;
+  font-size: 1.2rem;
+  padding: 10px;
+  border: transparent;
+  border: none;
+  border-radius: 999px;
+  background-image: linear-gradient(#533f52, #17021f);
+  cursor: pointer;
+  color: rgb(227, 219, 231);
+  margin-top: 0.5rem;
+}
+
+.btnHome:hover {
+  background-image: linear-gradient(#a08c9f, #471658);
+  color: rgb(251, 250, 252);
+}
+.btnHome:active {
+  transform: scale(0.99);
+}
