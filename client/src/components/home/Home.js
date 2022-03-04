@@ -3,30 +3,29 @@ import style from './home.module.css'
 import styleloading from './loading.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { getAll, getAllActivities } from './../../actions/index'
 import Card from '../card/Card'
 import Paginated from '../paginated/Paginated'
 import SearchCountry from '../searchCountry/SearchCountry'
 import FilterByContinents from '../filterByContinents/FilterByContinents'
+import OrderByPopulation from '../orderByPopulation/OrderByPopulation'
+import OrderAscDesc from '../orderAscDesc/OrderAscDesc'
+import FilterByActivities from '../filterByActivities/FilterByActivities'
+
 
 function Home () {
   const dispatch = useDispatch()
   const countries = useSelector(state => state.countries)
-  //const activities = useEffect(state => state.activities)
+  const activities = useSelector(state => state.activities)
+  //console.log(activities)
+  //console.log(countries)
   let history = useHistory()
 
-  useEffect(() => {
-    dispatch(getAll())
-  }, [])
-
-  useEffect(() => {
-    dispatch(getAllActivities())
-  }, [])
-
-  /*------------- PAGINATION ------------------*/
+  const [order, setOrder] = useState('')
+  //console.log(order)
   const [currentPage, setCurrentPage] = useState(1)
-  const [countriesPage, setCountriesPage] = useState(10)
+  const countriesPage = 10
 
   const lastPos = currentPage * countriesPage // 1 * 10 = 10
   const firstPos = lastPos - countriesPage // 10 - 10 = 0
@@ -36,6 +35,14 @@ function Home () {
     // esta funcion sirve para el renderizado
     setCurrentPage(page)
   }
+
+  useEffect(() => {
+    dispatch(getAll())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getAllActivities())
+  }, [dispatch])
 
   function handleBack (e) {
     e.preventDefault()
@@ -59,11 +66,29 @@ function Home () {
             Reload
           </button>
         </div>
+
+        <OrderByPopulation
+          setCurrentPage={setCurrentPage}
+          setOrder={setOrder}
+        />
+
+        <OrderAscDesc setCurrentPage={setCurrentPage} setOrder={setOrder} />
+
+        <FilterByActivities
+          activities={activities}
+          setOrder={setOrder}
+          setCurrentPage={setCurrentPage}
+        />
+
       </nav>
+
       <div className={style.containerInferior}>
         <div className={style.containerInferiorSub1}>
+
           <SearchCountry setCurrentPage={setCurrentPage} />
+
           <FilterByContinents setCurrentPage={setCurrentPage} />
+          
         </div>
 
         <div className={style.containerInferiorSub2}>

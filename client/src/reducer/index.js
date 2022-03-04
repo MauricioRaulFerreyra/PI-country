@@ -81,6 +81,9 @@ function rootReducer (state = initialState, action) {
         c.activities?.forEach(e => {
           if (e.name === action.payload) {
             activitiesCountries.push(c)
+          } else {
+            alert('Not found activities')
+            return
           }
         })
       )

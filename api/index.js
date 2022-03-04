@@ -45,7 +45,6 @@ const getAll = async () => {
     return response
   } catch (err) {
     console.log(err)
-    next(err)
   }
 }
 
