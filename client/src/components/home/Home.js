@@ -13,16 +13,9 @@ import FilterByContinents from '../filterByContinents/FilterByContinents'
 function Home () {
   const dispatch = useDispatch()
   const countries = useSelector(state => state.countries)
-  //const activities = useEffect(state => state.activities)
+  const activities = useSelector(state => state.activities)
+
   let history = useHistory()
-
-  useEffect(() => {
-    dispatch(getAll())
-  }, [])
-
-  useEffect(() => {
-    dispatch(getAllActivities())
-  }, [])
 
   /*------------- PAGINATION ------------------*/
   const [currentPage, setCurrentPage] = useState(1)
@@ -30,6 +23,7 @@ function Home () {
 
   const lastPos = currentPage * countriesPage // 1 * 10 = 10
   const firstPos = lastPos - countriesPage // 10 - 10 = 0
+  //console.log(countries)
   const currentCountries = countries && countries.slice(firstPos, lastPos) // [ 0,1,2,3,4,5,6,7,8,9 ]  el 10 no incluye el array
 
   const pagination = page => {
@@ -45,6 +39,14 @@ function Home () {
     e.preventDefault()
     dispatch(getAll())
   }
+
+  useEffect(() => {
+    dispatch(getAll())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(getAllActivities())
+  }, [dispatch])
 
   return (
     <div className={style.container}>
@@ -88,7 +90,6 @@ function Home () {
                   image={el.image}
                   name={el.name}
                   continent={el.continent}
-                  population={el.population}
                 />
               ))
             ) : (

@@ -29,16 +29,17 @@ let API = process.env.apiAll
 const getAll = async () => {
   try {
     let response = await axios(API)
-    response = response.data.map(e => {
+    response = response.data.map(res => {
       return {
-        id: e.cca3,
-        name: e.name.common && e.name.common,
-        image: e.flags && e.flags.map(flag => flag),
-        continent: e.continents && e.continents.map(el => el),
-        capital: e.capital ? e.capital.map(el => el) : ['not data'],
-        subregion: e.subregion,
-        area: e.area,
-        population: e.population
+        id: res.cca3,
+        name: res.name.common && res.name.common,
+        image: res.flags && res.flags.map(flag => flag),
+        continent: res.continents && res.continents.map(el => el),
+        capital: res.capital ? res.capital.map(el => el) : ['no data'],
+        subregion: res.subregion,
+        area: res.area,
+        population: res.population,
+        maps: res.maps.googleMaps
       }
     })
     //console.log(response)

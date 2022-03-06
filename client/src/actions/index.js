@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 export function getAll () {
   return function (dispatch) {
     return fetch('http://localhost:3001/countries')
@@ -99,21 +101,33 @@ export function filterByActivity (activity) {
   }
 }
 
-export function filterById (id) {
-  return function (dispatch) {
-    fetch(`http://localhost:3001/countries/${id}`)
-      .then(
-        response => response.json,
-        err => console.log(err)
-      )
-      .then(data => {
-        dispatch(
-          {
-            type: 'FILTER_BY_ID',
-            payload: data
-          },
-          err => console.log(err)
-        )
-      })
+// export function filterById (id) {
+//   return function (dispatch) {
+//     fetch(`http://localhost:3001/countries/${id}`)
+//       .then(
+//         response => response.json,
+//         err => console.log(err)
+//       )
+//       .then(data => {
+//         dispatch(
+//           {
+//             type: 'FILTER_BY_ID',
+//             payload: data
+//           },
+//           err => console.log(err)
+//         )
+//       })
+//   }
+// }
+
+export const filterById = id => {
+  return async function (dispatch) {
+    const detailCountry = await axios.get(
+      `http://localhost:3001/countries/${id}`
+    )
+    return dispatch({
+      type: 'FILTER_BY_ID',
+      payload: detailCountry.data
+    })
   }
 }
