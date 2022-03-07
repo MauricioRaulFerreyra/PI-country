@@ -6,6 +6,7 @@
 .containerSelect {
   background-image: linear-gradient(#f5b7b1, #cb4335);
   font-weight: 800;
+  font-size: 15px;
   font-family: 'Roboto Slab', serif;
   padding: 5.2px;
   border: transparent;

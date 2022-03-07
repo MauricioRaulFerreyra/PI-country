@@ -2,7 +2,7 @@ const initialState = {
   countries: [],
   copyCountries: [],
   activities: [],
-  details: []
+  details: {}
 }
 
 function rootReducer (state = initialState, action) {
@@ -76,11 +76,15 @@ function rootReducer (state = initialState, action) {
       }
     }
     case 'FILTER_BY_ACTIVITY': {
-      const activitiesCountries = []
+      let activitiesCountries = []
       state.copyCountries.map(c =>
         c.activities?.forEach(e => {
           if (e.name === action.payload) {
             activitiesCountries.push(c)
+          } else {
+            activitiesCountries = state.copyCountries
+            alert('Not found activities')
+            return
           }
         })
       )

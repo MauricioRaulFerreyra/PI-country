@@ -25,9 +25,9 @@ export function filterByContinents (payload) {
 
 export function searchByName (name) {
   return function (dispatch) {
-    fetch(`http://localhost:3001/countries?name=${name}`)
+    return fetch(`http://localhost:3001/countries?name=${name}`)
       .then(
-        response => response.json,
+        response => response.json(),
         err => console.log(err)
       )
       .then(data => {
@@ -41,6 +41,16 @@ export function searchByName (name) {
       })
   }
 }
+
+// export const searchByName = (name) => {
+//   return async function(dispatch) {
+//       const filterName = await axios.get(`http://localhost:3001/countries?name=${name}`)
+//       return dispatch({
+//           type: 'SEARCH_BY_NAME',
+//           payload: filterName.data
+//       })
+//   }
+// }
 
 export function orderAscDesc (value) {
   return {
@@ -58,9 +68,9 @@ export function orderByPopulation (value) {
 
 export function postActivity (activity) {
   return function (dispatch) {
-    fetch('http://localhost:3001/activities', activity)
+    return fetch('http://localhost:3001/activities', activity)
       .then(
-        response => response.json,
+        response => response.json(),
         err => console.log(err)
       )
       .then(data => {
@@ -77,9 +87,9 @@ export function postActivity (activity) {
 
 export function getAllActivities () {
   return function (dispatch) {
-    fetch('http://localhost:3001/activities')
+    return fetch('http://localhost:3001/activities')
       .then(
-        response => response.json,
+        response => response.json(),
         err => console.log(err)
       )
       .then(data => {
@@ -94,6 +104,16 @@ export function getAllActivities () {
   }
 }
 
+// export const getAllActivities = () => {
+//   return async function(dispatch) {
+//       const activities = await axios.get("http://localhost:3001/activities")
+//       return dispatch({
+//           type: 'GET_ALL_ACTIVITIES',
+//           payload: activities.data
+//       })
+//   }
+// }
+
 export function filterByActivity (activity) {
   return {
     type: 'FILTER_BY_ACTIVITY',
@@ -101,33 +121,33 @@ export function filterByActivity (activity) {
   }
 }
 
-// export function filterById (id) {
-//   return function (dispatch) {
-//     fetch(`http://localhost:3001/countries/${id}`)
-//       .then(
-//         response => response.json,
-//         err => console.log(err)
-//       )
-//       .then(data => {
-//         dispatch(
-//           {
-//             type: 'FILTER_BY_ID',
-//             payload: data
-//           },
-//           err => console.log(err)
-//         )
-//       })
+// export const filterById = id => {
+//   return async function (dispatch) {
+//     const detailCountry = await axios.get(
+//       `http://localhost:3001/countries/${id}`
+//     )
+//     return dispatch({
+//       type: 'FILTER_BY_ID',
+//       payload: detailCountry.data
+//     })
 //   }
 // }
 
-export const filterById = id => {
-  return async function (dispatch) {
-    const detailCountry = await axios.get(
-      `http://localhost:3001/countries/${id}`
-    )
-    return dispatch({
-      type: 'FILTER_BY_ID',
-      payload: detailCountry.data
-    })
+export function filterById (id) {
+  return function (dispatch) {
+    return fetch(`http://localhost:3001/countries/${id}`)
+      .then(
+        response => response.json(),
+        err => console.log(err)
+      )
+      .then(data => {
+        dispatch(
+          {
+            type: 'FILTER_BY_ID',
+            payload: data
+          },
+          err => console.log(err)
+        )
+      })
   }
 }

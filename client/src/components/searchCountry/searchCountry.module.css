@@ -17,7 +17,7 @@
 }
 
 .btnSearch {
-  font-weight: 500;
+  font-weight: 800;
   font-family: 'Roboto Slab', serif;
   padding: 7px;
   border: transparent;
@@ -25,7 +25,7 @@
   border-radius: 0.2rem;
   background-image: linear-gradient(#f5b7b1, #cb4335);
   cursor: pointer;
-  color: rgb(32, 29, 29);
+  color: rgb(0, 0, 0);
   transition-duration: 1.6s;
 }
 
@@ -40,6 +40,8 @@
 
 .error {
   position: absolute;
-  top: 15px;
+  bottom: 20px;
   color: #dbccca;
+  font-size: 20px;
+  font-weight:800;
 }

@@ -1,15 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  max-width: 1600px;
   width: 100vw;
-  height: 100vh;
-  margin: 0 auto;
-  padding: 0 auto;
+  height: 720px;
+  margin: 0 2px;
+  padding: 0;
   box-sizing: border-box;
   text-align: center;
   background-image: url('https://cdn.pixabay.com/photo/2018/03/15/16/11/background-3228704_960_720.jpg');
-  background-repeat: space;
+  background-repeat: no-repeat;
   background-size: cover;
 }
 
@@ -49,6 +48,7 @@
 }
 
 .containerInferiorSub1 {
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -56,7 +56,7 @@
   align-content: space-around;
   align-items: baseline;
   width: 100%;
-  padding: 0;
+  height: 80px;
 }
 
 .containerPaginated {
@@ -76,11 +76,12 @@
   gap: 0.7rem;
 }
 .grid {
+  height: 200px;
   display: grid;
-  margin: 0 2px 2px -2px;
+  margin: 0 70px;
   padding: 0 2px;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 1rem 0.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.2rem 0.5rem;
   /* grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 1.2rem 0.7rem; */
 }

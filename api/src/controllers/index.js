@@ -33,7 +33,7 @@ function getAll (req, res, next) {
 function getById (req, res, next) {
   let newId = req.params.id
   if (newId) {
-    let data = Country.findAll({
+    let data = Country.findOne({
       include: Activity,
       where: {
         id: { [Op.iLike]: `%${newId}%` }
