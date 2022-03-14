@@ -12,6 +12,7 @@ import FilterByContinents from '../filterByContinents/FilterByContinents'
 import OrderByPopulation from '../orderByPopulation/OrderByPopulation'
 import OrderAscDesc from '../orderAscDesc/OrderAscDesc'
 import FilterByActivities from '../filterByActivities/FilterByActivities'
+import CreateActivities from '../createActivity/CreateActivities'
 
 function Home () {
   const dispatch = useDispatch()
@@ -27,7 +28,13 @@ function Home () {
   //console.log(order)
 
   const [currentPage, setCurrentPage] = useState(1)
-  const countriesPage = 10
+  let countriesPage = 0
+  if (currentPage === 1) {
+    countriesPage = 9
+  }
+  if (currentPage >= 2) {
+    countriesPage = 10
+  }
 
   const lastPos = currentPage * countriesPage // 1 * 10 = 10
   const firstPos = lastPos - countriesPage // 10 - 10 = 0
@@ -97,6 +104,8 @@ function Home () {
           <SearchCountry setCurrentPage={setCurrentPage} />
 
           <FilterByContinents setCurrentPage={setCurrentPage} />
+
+          <CreateActivities />
         </div>
 
         <div className={style.containerInferiorSub2}>

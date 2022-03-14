@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L",
-    "test": "mocha -w ./tests/**/*.spec.js"
+    "test": "mocha src/test/routes.test.js"
   },
   "author": "Henry",
   "license": "ISC",
@@ -14,6 +14,9 @@
     "npm": ">=6.14.6"
   },
   "dependencies": {
+    "supertest": "^6.2.2",
+    "jest": "^27.3.1",
+    "supertest-as-promised": "^4.0.2",
     "axios": "^0.26.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",

@@ -1,0 +1,28 @@
+.containerBtnCreateAct {
+  margin-top: 3rem;
+}
+
+.btnCreateAct {
+  width: 218px;
+  border-radius: 0.1rem;
+  font-weight: 500;
+  font-size: 15px;
+  font-family: 'Roboto Slab', serif;
+  padding: 10px;
+  border: transparent;
+  border: none;
+  border-radius: 0.2rem;
+  background-image: linear-gradient(#f5b7b1, #cb4335);
+  cursor: pointer;
+  color: rgb(32, 29, 29);
+  transition-duration: 1.6s;
+}
+
+.btnCreateAct:hover {
+  color: white;
+  background-image: linear-gradient(#e69d96, #5f1007);
+  transition-duration: 1.6s;
+}
+.btnCreateAct:active {
+  transform: scale(0.99);
+}
