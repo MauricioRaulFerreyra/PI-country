@@ -23,7 +23,8 @@
   font-size: 3.7rem;
   font-weight: 1000;
   font-family: 'Roboto Slab', serif;
-  color: rgb(153, 146, 201);
+  color: #dd9a94;
+  transition-duration: 1.6s;
   text-align: left;
 }
 

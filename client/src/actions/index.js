@@ -66,22 +66,35 @@ export function orderByPopulation (value) {
   }
 }
 
-export function postActivity (activity) {
-  return function (dispatch) {
-    return fetch('http://localhost:3001/activities', activity)
-      .then(
-        response => response.json(),
-        err => console.log(err)
-      )
-      .then(data => {
-        dispatch(
-          {
-            type: 'CREATE_ACTIVITY',
-            payload: data
-          },
-          err => console.log(err)
-        )
-      })
+// export function postActivity (activity) {
+//   return function (dispatch) {
+//     return fetch('http://localhost:3001/activities', activity)
+//       .then(
+//         response => response.json(),
+//         err => console.log(err)
+//       )
+//       .then(data => {
+//         dispatch(
+//           {
+//             type: 'CREATE_ACTIVITY',
+//             payload: data
+//           },
+//           err => console.log(err)
+//         )
+//       })
+//   }
+// }
+
+export const postActivity = activity => {
+  return async function (dispatch) {
+    const newActivity = await axios.post(
+      'http://localhost:3001/activities',
+      activity
+    )
+    return dispatch({
+      type: 'CREATE_ACTIVITY',
+      payload: newActivity
+    })
   }
 }
 

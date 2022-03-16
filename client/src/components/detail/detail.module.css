@@ -92,10 +92,7 @@
   align-items: center;
   width: 45%;
   height: 200px;
-  background-image: linear-gradient(
-    rgba(143, 172, 172, 0.5),
-    rgba(158, 79, 70, 0.7)
-  );
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(158, 79, 70, 0.7));
   border-radius: 5px;
   color: #161312;
   margin-top: -14rem;

@@ -48,11 +48,11 @@ function Home () {
 
   useEffect(() => {
     dispatch(getAll())
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     dispatch(getAllActivities())
-  }, [dispatch])
+  }, [])
 
   function handleBack (e) {
     e.preventDefault()
@@ -65,11 +65,11 @@ function Home () {
 
   useEffect(() => {
     dispatch(getAll())
-  }, [dispatch])
+  }, [])
 
   useEffect(() => {
     dispatch(getAllActivities())
-  }, [dispatch])
+  }, [])
 
   return (
     <div className={style.container}>

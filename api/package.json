@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -L",
-    "test": "mocha src/test/routes.test.js"
+    "testroutes": "mocha src/test/routes.test.js",
+    "testmodel": "mocha src/test/model.test.js",
+    "test": "mocha src/test",
+    "test:ci": "node ./.github/prepare.js && jest --verbose --detectOpenHandles --testResultsProcessor ./.github/reporter.js",
+    "test:old": "jest"
   },
   "author": "Henry",
   "license": "ISC",
@@ -14,9 +18,6 @@
     "npm": ">=6.14.6"
   },
   "dependencies": {
-    "supertest": "^6.2.2",
-    "jest": "^27.3.1",
-    "supertest-as-promised": "^4.0.2",
     "axios": "^0.26.0",
     "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
@@ -24,10 +25,14 @@
     "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "ioredis": "^4.19.2",
+    "jest": "^27.3.1",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
+    "node-fetch": "^3.2.3",
     "pg": "^8.5.1",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "supertest": "^6.2.2",
+    "supertest-as-promised": "^4.0.2"
   },
   "devDependencies": {
     "chai": "^4.2.0",

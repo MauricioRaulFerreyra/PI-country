@@ -98,7 +98,7 @@ function PageCreate () {
     setError(validate(data))
     //console.log(data)
     if (Object.keys(validate(data)).length === 0) {
-      //console.log(data)
+      console.log(data)
       dispatch(postActivity(data))
       setData({
         name: '',

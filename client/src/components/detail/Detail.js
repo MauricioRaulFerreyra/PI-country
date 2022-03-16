@@ -7,22 +7,20 @@ import { useHistory, useParams } from 'react-router-dom'
 function Detail () {
   const dispatch = useDispatch()
   let country = useSelector(state => state.details)
-  console.log(country)
+  //console.log(country)
 
   const { id } = useParams()
   const history = useHistory()
 
   useEffect(() => {
     dispatch(filterById(id))
-  }, [dispatch])
+  }, [])
 
   const handleBack = () => {
     history.push('/home')
   }
 
-  const handleMaps = () => {}
-
-  console.log(country.name)
+  //console.log(country.name)
 
   return (
     <>

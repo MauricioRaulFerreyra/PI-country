@@ -18,11 +18,7 @@ function FilterByContinents ({ setCurrentPage }) {
         defaultValue='default'
         className={style.containerSelect}
       >
-        <option
-          value='default'  
-          disabled='disabled'
-          className={style.containerSelectOp1}
-        >
+        <option value='All' className={style.containerSelectOp1}>
           Filter by Continents
         </option>
         <option value='All' className={style.containerSelectOp}>

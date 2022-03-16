@@ -50,7 +50,7 @@ function rootReducer (state = initialState, action) {
 
       return {
         ...state,
-        counties: orderAscDesc
+        countries: orderAscDesc
       }
     }
     case 'ORDER_BY_POPULATION': {
@@ -77,17 +77,16 @@ function rootReducer (state = initialState, action) {
     }
     case 'FILTER_BY_ACTIVITY': {
       let activitiesCountries = []
-      state.copyCountries.map(c =>
-        c.activities?.forEach(e => {
-          if (e.name === action.payload) {
-            activitiesCountries.push(c)
-          } else {
-            activitiesCountries = state.copyCountries
-            alert('Not found activities')
-            return
-          }
-        })
-      )
+      action.payload !== 'all'
+        ? state.copyCountries.map(c =>
+            c.activities?.forEach(e => {
+              if (e.name === action.payload) {
+                activitiesCountries.push(c)
+              }
+            })
+          )
+        : (activitiesCountries = [...state.copyCountries])
+
       return {
         ...state,
         countries: activitiesCountries

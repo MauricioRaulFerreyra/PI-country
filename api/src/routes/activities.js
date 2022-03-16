@@ -1,7 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const { Activity, Country } = require('../db')
-const { postActivity, getActivity } = require('../controllers')
+const { getActivity, postActivity } = require('../controllers')
 
 router.post('/', postActivity)
 

@@ -16,7 +16,9 @@ function FilterByActivities ({ setCurrentPage, activities, setOrder }) {
   return (
     <div className={style.container}>
       <select onChange={e => handleChange(e)} className={style.containerSelect}>
-        <option className={style.containerSelectOp1}>search activity</option>
+        <option className={style.containerSelectOp1} value='all'>
+          search activity
+        </option>
         {activities &&
           activities.map((act, i) => (
             <option
@@ -24,6 +26,7 @@ function FilterByActivities ({ setCurrentPage, activities, setOrder }) {
               className={style.containerSelectOp}
               value={act.name}
             >
+              {/* {console.log(act.name)} */}
               {act.name}
             </option>
           ))}
