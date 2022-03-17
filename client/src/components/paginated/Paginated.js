@@ -8,6 +8,8 @@ function Paginated ({ countries, pagination, countriesPage }) {
     pageNumber.push(i)
   }
 
+  let aux = 25
+
   return (
     <div>
       <ul className={style.lista}>

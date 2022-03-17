@@ -27,19 +27,14 @@ function Home () {
   const [order, setOrder] = useState('')
   //console.log(order)
 
-  const [currentPage, setCurrentPage] = useState(1)
-  let countriesPage = 0
-  if (currentPage === 1) {
-    countriesPage = 9
-  }
-  if (currentPage >= 2) {
-    countriesPage = 10
-  }
+  let currentCountries
 
-  const lastPos = currentPage * countriesPage // 1 * 10 = 10
-  const firstPos = lastPos - countriesPage // 10 - 10 = 0
-  //console.log(countries)
-  const currentCountries = countries && countries.slice(firstPos, lastPos) // [ 0,1,2,3,4,5,6,7,8,9 ]  el 10 no incluye el array
+  const [currentPage, setCurrentPage] = useState(1)
+  const [countriesPerPage] = useState(10)
+
+  const indexLast = currentPage * countriesPerPage
+  const indexFirst = indexLast - countriesPerPage
+  currentCountries = countries && countries.slice(indexFirst, indexLast)
 
   const pagination = page => {
     // esta funcion sirve para el renderizado
@@ -111,7 +106,7 @@ function Home () {
         <div className={style.containerInferiorSub2}>
           <div className={style.containerPaginated}>
             <Paginated
-              countriesPage={countriesPage}
+              countriesPage={countriesPerPage}
               countries={countries && countries.length}
               pagination={pagination}
             />

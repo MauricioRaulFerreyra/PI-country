@@ -67,7 +67,7 @@ module.exports = {
       })
       console.log(country)
       data.addCountry(country)
-      return res.status(200).json(data)
+      res.status(200).json(data)
     } catch (err) {
       res.status(404).json('Activity do not created', err)
     }

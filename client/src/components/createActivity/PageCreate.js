@@ -49,16 +49,28 @@ function PageCreate () {
 
   const dispatch = useDispatch()
   const countries = useSelector(state => state.countries)
+  const activity = useSelector(state => state.activities)
+  //console.log(activity)
+  let aux = activity.map(el => el.name)
+  //console.log(aux)
 
   useEffect(() => {
     dispatch(getAll())
   }, [])
 
   const handleInput = e => {
+    console.log(data.name)
+    if (aux.includes(data.name)) {
+      alert('this activity already exists')
+      data.name = ''
+      return
+    }
     setData({
       ...data,
       [e.target.name]: e.target.value
     })
+    console.log(data.idCountry)
+    //console.log(data.name)
   }
 
   const handleBlur = e => {
@@ -79,10 +91,27 @@ function PageCreate () {
     })
   }
   const handleSelectCountries = e => {
+    if (!e.target.value) return
+    // if (data.idCountry.length >= 2) {
+    //   alert('You cant only choose max 2 country')
+    //   return
+    // }
+    if (
+      e.target.value === activity.find(el => el.idCountry === e.target.value)
+    ) {
+      alert('ya se eligio ese pais')
+      return
+    }
+    if (e.target.value === data.idCountry.find(el => el === e.target.value)) {
+      alert("You can't choose the same country")
+      return
+    }
     setData({
       ...data,
       idCountry: [...data.idCountry, e.target.value]
     })
+    //console.log(data.idCountry)
+    e.target.value = 'default'
   }
 
   const handleDelete = idCountry => {
@@ -96,9 +125,8 @@ function PageCreate () {
   const handleSubmit = e => {
     e.preventDefault()
     setError(validate(data))
-    //console.log(data)
     if (Object.keys(validate(data)).length === 0) {
-      console.log(data)
+      //console.log(data)
       dispatch(postActivity(data))
       setData({
         name: '',
@@ -150,7 +178,7 @@ function PageCreate () {
                   <label className={style.labelActivity}>Difficulty: </label>
                   <select
                     type='text'
-                    name='season'
+                    name='difficulty'
                     className={style.selectActivity}
                     onChange={handleDifficulty}
                     onBlur={handleBlur}
