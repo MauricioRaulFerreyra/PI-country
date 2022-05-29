@@ -24,7 +24,7 @@ const validate = value => {
   return errors
 }
 
-function PageCreate () {
+function PageCreate() {
   const imagen =
     'https://imagenes.elpais.com/resizer/poLxVzmwPheHVMXrqCcigjqj9BE=/414x311/filters:focal(436x272:446x282)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/GGWILMLEOATEMMU4WZDAG32W4Y.jpg'
 
@@ -92,10 +92,10 @@ function PageCreate () {
   }
   const handleSelectCountries = e => {
     if (!e.target.value) return
-    // if (data.idCountry.length >= 2) {
-    //   alert('You cant only choose max 2 country')
-    //   return
-    // }
+    if (data.idCountry.length >= 2) {
+      alert('You cant only choose max 2 country')
+      return
+    }
     if (
       e.target.value === activity.find(el => el.idCountry === e.target.value)
     ) {
@@ -110,7 +110,6 @@ function PageCreate () {
       ...data,
       idCountry: [...data.idCountry, e.target.value]
     })
-    //console.log(data.idCountry)
     e.target.value = 'default'
   }
 
@@ -126,7 +125,6 @@ function PageCreate () {
     e.preventDefault()
     setError(validate(data))
     if (Object.keys(validate(data)).length === 0) {
-      //console.log(data)
       dispatch(postActivity(data))
       setData({
         name: '',

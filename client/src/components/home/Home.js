@@ -14,18 +14,15 @@ import OrderAscDesc from '../orderAscDesc/OrderAscDesc'
 import FilterByActivities from '../filterByActivities/FilterByActivities'
 import CreateActivities from '../createActivity/CreateActivities'
 
-function Home () {
+function Home() {
   const dispatch = useDispatch()
   const countries = useSelector(state => state.countries)
   const activities = useSelector(state => state.activities)
 
   let history = useHistory()
 
-  //console.log(activities)
-  //console.log(countries)
 
   const [order, setOrder] = useState('')
-  //console.log(order)
 
   let currentCountries
 
@@ -37,7 +34,6 @@ function Home () {
   currentCountries = countries && countries.slice(indexFirst, indexLast)
 
   const pagination = page => {
-    // esta funcion sirve para el renderizado
     setCurrentPage(page)
   }
 
@@ -49,11 +45,11 @@ function Home () {
     dispatch(getAllActivities())
   }, [])
 
-  function handleBack (e) {
+  function handleBack(e) {
     e.preventDefault()
     history.push('/')
   }
-  function handleReload (e) {
+  function handleReload(e) {
     e.preventDefault()
     dispatch(getAll())
   }

@@ -1,14 +1,12 @@
 import React from 'react'
 import style from './paginated.module.css'
 
-function Paginated ({ countries, pagination, countriesPage }) {
+function Paginated({ countries, pagination, countriesPage }) {
   let pageNumber = []
 
   for (let i = 1; i <= Math.ceil(countries / countriesPage); i++) {
     pageNumber.push(i)
   }
-
-  let aux = 25
 
   return (
     <div>

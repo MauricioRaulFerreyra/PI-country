@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-export function getAll () {
+export function getAll() {
   return function (dispatch) {
-    return fetch('http://localhost:3001/countries')
+    return fetch('https://country-app-pi.herokuapp.com/countries')
       .then(
         response => response.json(),
         err => console.log(err)
@@ -12,20 +12,19 @@ export function getAll () {
           console.log(err)
         )
       })
-    //.catch(err => console.error(err)); -> cuando no hay errorhandler definidos anteriormente
   }
 }
 
-export function filterByContinents (payload) {
+export function filterByContinents(payload) {
   return {
     type: 'FILTER_BY_CONTINENTS',
     payload
   }
 }
 
-export function searchByName (name) {
+export function searchByName(name) {
   return function (dispatch) {
-    return fetch(`http://localhost:3001/countries?name=${name}`)
+    return fetch(`https://country-app-pi.herokuapp.com/countries?name=${name}`)
       .then(
         response => response.json(),
         err => console.log(err)
@@ -42,53 +41,26 @@ export function searchByName (name) {
   }
 }
 
-// export const searchByName = (name) => {
-//   return async function(dispatch) {
-//       const filterName = await axios.get(`http://localhost:3001/countries?name=${name}`)
-//       return dispatch({
-//           type: 'SEARCH_BY_NAME',
-//           payload: filterName.data
-//       })
-//   }
-// }
 
-export function orderAscDesc (value) {
+export function orderAscDesc(value) {
   return {
     type: 'ORDER_ASC_DESC',
     payload: value
   }
 }
 
-export function orderByPopulation (value) {
+export function orderByPopulation(value) {
   return {
     type: 'ORDER_BY_POPULATION',
     payload: value
   }
 }
 
-// export function postActivity (activity) {
-//   return function (dispatch) {
-//     return fetch('http://localhost:3001/activities', activity)
-//       .then(
-//         response => response.json(),
-//         err => console.log(err)
-//       )
-//       .then(data => {
-//         dispatch(
-//           {
-//             type: 'CREATE_ACTIVITY',
-//             payload: data
-//           },
-//           err => console.log(err)
-//         )
-//       })
-//   }
-// }
 
 export const postActivity = activity => {
   return async function (dispatch) {
     const newActivity = await axios.post(
-      'http://localhost:3001/activities',
+      'https://country-app-pi.herokuapp.com/activities',
       activity
     )
     return dispatch({
@@ -98,9 +70,9 @@ export const postActivity = activity => {
   }
 }
 
-export function getAllActivities () {
+export function getAllActivities() {
   return function (dispatch) {
-    return fetch('http://localhost:3001/activities')
+    return fetch('https://country-app-pi.herokuapp.com/activities')
       .then(
         response => response.json(),
         err => console.log(err)
@@ -117,38 +89,19 @@ export function getAllActivities () {
   }
 }
 
-// export const getAllActivities = () => {
-//   return async function(dispatch) {
-//       const activities = await axios.get("http://localhost:3001/activities")
-//       return dispatch({
-//           type: 'GET_ALL_ACTIVITIES',
-//           payload: activities.data
-//       })
-//   }
-// }
 
-export function filterByActivity (activity) {
+export function filterByActivity(activity) {
   return {
     type: 'FILTER_BY_ACTIVITY',
     payload: activity
   }
 }
 
-// export const filterById = id => {
-//   return async function (dispatch) {
-//     const detailCountry = await axios.get(
-//       `http://localhost:3001/countries/${id}`
-//     )
-//     return dispatch({
-//       type: 'FILTER_BY_ID',
-//       payload: detailCountry.data
-//     })
-//   }
-// }
 
-export function filterById (id) {
+
+export function filterById(id) {
   return function (dispatch) {
-    return fetch(`http://localhost:3001/countries/${id}`)
+    return fetch(`https://country-app-pi.herokuapp.com/countries/${id}`)
       .then(
         response => response.json(),
         err => console.log(err)

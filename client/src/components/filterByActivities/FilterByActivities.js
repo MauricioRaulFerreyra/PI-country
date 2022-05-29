@@ -1,15 +1,12 @@
 import React from 'react'
 import style from './filterByActivities.module.css'
 import { filterByActivity } from '../../actions/index'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
-function FilterByActivities ({ setCurrentPage, activities, setOrder }) {
+function FilterByActivities({ setCurrentPage, activities, setOrder }) {
   const dispatch = useDispatch()
 
-  //let aux = activities.map(el => el.name)
-  //console.log(aux)
-
-  function handleChange (e) {
+  function handleChange(e) {
     e.preventDefault()
     dispatch(filterByActivity(e.target.value))
     setCurrentPage(1)
@@ -29,7 +26,6 @@ function FilterByActivities ({ setCurrentPage, activities, setOrder }) {
               className={style.containerSelectOp}
               value={act.name}
             >
-              {/* {console.log(act.name)} */}
               {act.name}
             </option>
           ))}

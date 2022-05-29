@@ -4,10 +4,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { filterById } from '../../actions'
 import { useHistory, useParams } from 'react-router-dom'
 
-function Detail () {
+function Detail() {
   const dispatch = useDispatch()
   let country = useSelector(state => state.details)
-  //console.log(country)
 
   const { id } = useParams()
   const history = useHistory()
@@ -19,8 +18,6 @@ function Detail () {
   const handleBack = () => {
     history.push('/home')
   }
-
-  //console.log(country.name)
 
   return (
     <>
