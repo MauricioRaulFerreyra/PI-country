@@ -1,19 +1,17 @@
 import axios from 'axios'
 
-export function getAll() {
-  return function (dispatch) {
-    return fetch('https://country-app-pi.herokuapp.com/countries')
-      .then(
-        response => response.json(),
-        err => console.log(err)
-      )
-      .then(data => {
-        dispatch({ type: 'GET_ALL_COUNTRIES', payload: data }, err =>
-          console.log(err)
-        )
-      })
+export const getAll = () => {
+  return async function (dispatch) {
+    const response = await axios.get('https://country-app-pi.herokuapp.com/countries')
+    return dispatch(
+      {
+        type: 'GET_ALL_COUNTRIES',
+        payload: response.data
+      }
+    )
   }
 }
+
 
 export function filterByContinents(payload) {
   return {
@@ -22,24 +20,18 @@ export function filterByContinents(payload) {
   }
 }
 
-export function searchByName(name) {
-  return function (dispatch) {
-    return fetch(`https://country-app-pi.herokuapp.com/countries?name=${name}`)
-      .then(
-        response => response.json(),
-        err => console.log(err)
-      )
-      .then(data => {
-        dispatch(
-          {
-            type: 'SEARCH_BY_NAME',
-            payload: data
-          },
-          err => console.log(err)
-        )
-      })
+export const searchByName = (name) => {
+  return async function (dispatch) {
+    const response = await axios.get(`https://country-app-pi.herokuapp.com/countries?name=${name}`)
+    return dispatch(
+      {
+        type: 'SEARCH_BY_NAME',
+        payload: response.data
+      }
+    )
   }
 }
+
 
 
 export function orderAscDesc(value) {
@@ -70,24 +62,18 @@ export const postActivity = activity => {
   }
 }
 
-export function getAllActivities() {
-  return function (dispatch) {
-    return fetch('https://country-app-pi.herokuapp.com/activities')
-      .then(
-        response => response.json(),
-        err => console.log(err)
-      )
-      .then(data => {
-        dispatch(
-          {
-            type: 'GET_ALL_ACTIVITIES',
-            payload: data
-          },
-          err => console.log(err)
-        )
-      })
+export const getAllActivities = () => {
+  return async function (dispatch) {
+    const response = await axios.get('https://country-app-pi.herokuapp.com/activities')
+    return dispatch(
+      {
+        type: 'GET_ALL_ACTIVITIES',
+        payload: response.data
+      },
+    )
   }
 }
+
 
 
 export function filterByActivity(activity) {
@@ -99,21 +85,15 @@ export function filterByActivity(activity) {
 
 
 
-export function filterById(id) {
-  return function (dispatch) {
-    return fetch(`https://country-app-pi.herokuapp.com/countries/${id}`)
-      .then(
-        response => response.json(),
-        err => console.log(err)
-      )
-      .then(data => {
-        dispatch(
-          {
-            type: 'FILTER_BY_ID',
-            payload: data
-          },
-          err => console.log(err)
-        )
-      })
+export const filterById = (id) => {
+  return async function (dispatch) {
+    const response = await axios.get(`https://country-app-pi.herokuapp.com/countries/${id}`)
+    return dispatch(
+      {
+        type: 'FILTER_BY_ID',
+        payload: response.data
+      },
+    )
   }
 }
+
