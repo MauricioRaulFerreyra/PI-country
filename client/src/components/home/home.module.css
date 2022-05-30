@@ -2,14 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  height: 720px;
-  margin: 0 2px;
+  height: 100vh;
+  margin: 0 auto;
   padding: 0;
   box-sizing: border-box;
   text-align: center;
-  background-image: url('https://cdn.pixabay.com/photo/2018/03/15/16/11/background-3228704_960_720.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .containerNav {
@@ -82,6 +79,4 @@
   padding: 0 2px;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.2rem 0.5rem;
-  /* grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 1.2rem 0.7rem; */
 }
