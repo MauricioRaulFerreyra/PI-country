@@ -3,6 +3,12 @@
   cursor: pointer;
 }
 
+@media screen and (max-width: 580px) {
+  .container {
+    display: none;
+  }
+}
+
 .containerSelect {
   background-image: linear-gradient(#f5b7b1, #cb4335);
   font-weight: 800;
