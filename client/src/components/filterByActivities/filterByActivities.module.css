@@ -27,6 +27,18 @@
   }
 }
 
+@media screen and (max-width: 323px) {
+  .containerSelect {
+    margin-bottom: 13px;
+  }
+}
+
+@media screen and (min-width: 215px) {
+  .containerSelect {
+    margin-bottom: 13px;
+  }
+}
+
 .containerSelect:hover {
   color: white;
   background-image: linear-gradient(#e69d96, #5f1007);

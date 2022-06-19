@@ -3,32 +3,24 @@ import style from './home.module.css'
 import styleloading from './loading.module.css'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useHistory } from 'react-router-dom'
 import { getAll, getAllActivities } from './../../actions/index'
 import Card from '../card/Card'
 import Paginated from '../paginated/Paginated'
 import SearchCountry from '../searchCountry/SearchCountry'
 import FilterByContinents from '../filterByContinents/FilterByContinents'
-import OrderByPopulation from '../orderByPopulation/OrderByPopulation'
-import OrderAscDesc from '../orderAscDesc/OrderAscDesc'
-import FilterByActivities from '../filterByActivities/FilterByActivities'
 import CreateActivities from '../createActivity/CreateActivities'
+import NavBar from '../navbar/NavBar'
 
-function Home() {
+function Home () {
   const dispatch = useDispatch()
   const countries = useSelector(state => state.countries)
-  const activities = useSelector(state => state.activities)
-
-  let history = useHistory()
-
-
-  const [order, setOrder] = useState('')
 
   let currentCountries
 
   const [currentPage, setCurrentPage] = useState(1)
   const [countriesPerPage] = useState(10)
-
+  const [order, setOrder] = useState('')
+  console.log(order)
   const indexLast = currentPage * countriesPerPage
   const indexFirst = indexLast - countriesPerPage
   currentCountries = countries && countries.slice(indexFirst, indexLast)
@@ -39,56 +31,23 @@ function Home() {
 
   useEffect(() => {
     dispatch(getAll())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getAllActivities())
-  }, [])
-
-  function handleBack(e) {
-    e.preventDefault()
-    history.push('/')
-  }
-  function handleReload(e) {
-    e.preventDefault()
-    dispatch(getAll())
-  }
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getAll())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getAllActivities())
-  }, [])
+  }, [dispatch])
 
   return (
     <div className={style.container}>
-      <nav className={style.containerNav}>
-        <div>
-          <button onClick={e => handleBack(e)} className={style.BtnReload}>
-            Back
-          </button>
-        </div>
-        <div>
-          <button onClick={e => handleReload(e)} className={style.BtnReload}>
-            Reload
-          </button>
-        </div>
-
-        <OrderByPopulation
-          setCurrentPage={setCurrentPage}
-          setOrder={setOrder}
-        />
-
-        <OrderAscDesc setCurrentPage={setCurrentPage} setOrder={setOrder} />
-
-        <FilterByActivities
-          activities={activities}
-          setOrder={setOrder}
-          setCurrentPage={setCurrentPage}
-        />
-      </nav>
+      <NavBar setCurrentPage={setCurrentPage} setOrder={setOrder} />
 
       <div className={style.containerInferior}>
         <div className={style.containerInferiorSub1}>

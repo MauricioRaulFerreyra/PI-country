@@ -1,99 +1,113 @@
-import axios from 'axios'
+const axios = require('axios').default
 
 export const getAll = () => {
   return async function (dispatch) {
-    const response = await axios.get('https://country-app-pi.herokuapp.com/countries')
-    return dispatch(
-      {
+    try {
+      const response = await axios.get(
+        `https://country-app-pi.herokuapp.com/countries`
+      )
+      return dispatch({
         type: 'GET_ALL_COUNTRIES',
         payload: response.data
-      }
-    )
+      })
+    } catch (error) {
+      return console.error(error)
+    }
   }
 }
 
-
-export function filterByContinents(payload) {
+export function filterByContinents (payload) {
   return {
     type: 'FILTER_BY_CONTINENTS',
     payload
   }
 }
 
-export const searchByName = (name) => {
-  return async function (dispatch) {
-    const response = await axios.get(`https://country-app-pi.herokuapp.com/countries?name=${name}`)
-    return dispatch(
-      {
-        type: 'SEARCH_BY_NAME',
-        payload: response.data
+export const searchByName = name => {
+  if (name) {
+    return async function (dispatch) {
+      try {
+        const response = await axios.get(
+          `https://country-app-pi.herokuapp.com/countries?name=${name}`
+        )
+        if (response.data.status === 404) {
+          dispatch({
+            type: 'NOT_FOUND',
+            payload: true
+          })
+        } else {
+          dispatch({
+            type: 'SEARCH_BY_NAME',
+            payload: response.data
+          })
+        }
+      } catch (error) {
+        dispatch({ type: 'NOT_FOUND', payload: true })
       }
-    )
+    }
   }
 }
 
-
-
-export function orderAscDesc(value) {
+export function orderAscDesc (value) {
   return {
     type: 'ORDER_ASC_DESC',
     payload: value
   }
 }
 
-export function orderByPopulation(value) {
+export function orderByPopulation (value) {
   return {
     type: 'ORDER_BY_POPULATION',
     payload: value
   }
 }
 
-
 export const postActivity = activity => {
-  return async function (dispatch) {
-    const newActivity = await axios.post(
-      'https://country-app-pi.herokuapp.com/activities',
-      activity
-    )
-    return dispatch({
-      type: 'CREATE_ACTIVITY',
-      payload: newActivity
-    })
+  return function () {
+    try {
+      const newActivity = axios.post(
+        'https://country-app-pi.herokuapp.com/activities',
+        activity
+      )
+      return newActivity
+    } catch (error) {
+      return console.error(error)
+    }
   }
 }
 
 export const getAllActivities = () => {
   return async function (dispatch) {
-    const response = await axios.get('https://country-app-pi.herokuapp.com/activities')
-    return dispatch(
-      {
+    try {
+      const response = await axios.get(
+        'https://country-app-pi.herokuapp.com/activities'
+      )
+      return dispatch({
         type: 'GET_ALL_ACTIVITIES',
         payload: response.data
-      },
-    )
+      })
+    } catch (error) {
+      return console.error(error)
+    }
   }
 }
 
-
-
-export function filterByActivity(activity) {
+export function filterByActivity (activity) {
   return {
     type: 'FILTER_BY_ACTIVITY',
     payload: activity
   }
 }
 
-
-
-export const filterById = (id) => {
+export const filterById = id => {
   return async function (dispatch) {
-    const response = await axios.get(`https://country-app-pi.herokuapp.com/countries/${id}`)
-    return dispatch(
-      {
-        type: 'FILTER_BY_ID',
-        payload: response.data
-      },
+    const response = await fetch(
+      `https://country-app-pi.herokuapp.com/countries/${id}`
     )
+    const data = await response.json()
+    return dispatch({
+      type: 'FILTER_BY_ID',
+      payload: data
+    })
   }
 }
-

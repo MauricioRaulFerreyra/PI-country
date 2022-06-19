@@ -1,0 +1,50 @@
+.containerNav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+@media screen and (max-width: 580px) {
+  .containerNav {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+
+.BtnReload {
+  font-weight: 900;
+  padding: 5px;
+  border: transparent;
+  border-radius: 0.2rem;
+  background-image: linear-gradient(#f5b7b1, #cb4335);
+  cursor: pointer;
+  color: rgb(32, 29, 29);
+  transition-duration: 1.6s;
+}
+
+@media screen and (max-width: 680px) {
+  .BtnReload {
+    height: 1.4rem;
+    width: 42px;
+    font-size: 9px;
+  }
+}
+
+.BtnReload:hover {
+  color: white;
+  background-image: linear-gradient(#e69d96, #5f1007);
+  transition-duration: 1.6s;
+}
+
+.BtnReload:active {
+  transform: scale(0.99);
+}
+
+
+
+
+

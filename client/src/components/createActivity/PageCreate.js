@@ -24,7 +24,7 @@ const validate = value => {
   return errors
 }
 
-function PageCreate() {
+function PageCreate () {
   const imagen =
     'https://imagenes.elpais.com/resizer/poLxVzmwPheHVMXrqCcigjqj9BE=/414x311/filters:focal(436x272:446x282)/cloudfront-eu-central-1.images.arcpublishing.com/prisa/GGWILMLEOATEMMU4WZDAG32W4Y.jpg'
 
@@ -56,10 +56,9 @@ function PageCreate() {
 
   useEffect(() => {
     dispatch(getAll())
-  }, [])
+  }, [dispatch])
 
   const handleInput = e => {
-    console.log(data.name)
     if (aux.includes(data.name)) {
       alert('this activity already exists')
       data.name = ''
@@ -69,8 +68,6 @@ function PageCreate() {
       ...data,
       [e.target.name]: e.target.value
     })
-    console.log(data.idCountry)
-    //console.log(data.name)
   }
 
   const handleBlur = e => {
