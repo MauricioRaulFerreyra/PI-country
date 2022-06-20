@@ -1,0 +1,11 @@
+POST https://country-app-pi.herokuapp.com/activities 
+content-type: application/json
+
+{
+    "name" : "nadar",
+    "difficulty":"3",
+    "duration":"dos horas",
+    "season":"Verano",
+    "idCountry":"ARG"
+}
+    
