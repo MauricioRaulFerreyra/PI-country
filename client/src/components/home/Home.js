@@ -1,49 +1,49 @@
-import React from 'react'
-import style from './home.module.css'
-import styleloading from './loading.module.css'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getAll, getAllActivities } from './../../actions/index'
-import Card from '../card/Card'
-import Paginated from '../paginated/Paginated'
-import SearchCountry from '../searchCountry/SearchCountry'
-import FilterByContinents from '../filterByContinents/FilterByContinents'
-import CreateActivities from '../createActivity/CreateActivities'
-import NavBar from '../navbar/NavBar'
+import React from "react";
+import style from "./home.module.css";
+import styleloading from "./loading.module.css";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getAll, getAllActivities } from "./../../actions/index";
+import Card from "../card/Card";
+import Paginated from "../paginated/Paginated";
+import SearchCountry from "../searchCountry/SearchCountry";
+import FilterByContinents from "../filterByContinents/FilterByContinents";
+import CreateActivities from "../createActivity/CreateActivities";
+import NavBar from "../navbar/NavBar";
 
-function Home () {
-  const dispatch = useDispatch()
-  const countries = useSelector(state => state.countries)
+function Home() {
+  const dispatch = useDispatch();
+  const countries = useSelector((state) => state.countries);
 
-  let currentCountries
+  let currentCountries;
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const [countriesPerPage] = useState(10)
-  const [order, setOrder] = useState('')
-  console.log(order)
-  const indexLast = currentPage * countriesPerPage
-  const indexFirst = indexLast - countriesPerPage
-  currentCountries = countries && countries.slice(indexFirst, indexLast)
+  const [currentPage, setCurrentPage] = useState(1);
+  const [countriesPerPage] = useState(10);
+  const [order, setOrder] = useState("");
+  console.log(order);
+  const indexLast = currentPage * countriesPerPage;
+  const indexFirst = indexLast - countriesPerPage;
+  currentCountries = countries && countries.slice(indexFirst, indexLast);
 
-  const pagination = page => {
-    setCurrentPage(page)
-  }
-
-  useEffect(() => {
-    dispatch(getAll())
-  }, [dispatch])
+  const pagination = (page) => {
+    setCurrentPage(page);
+  };
 
   useEffect(() => {
-    dispatch(getAllActivities())
-  }, [dispatch])
+    dispatch(getAll());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getAll())
-  }, [dispatch])
+    dispatch(getAllActivities());
+  }, [dispatch]);
 
   useEffect(() => {
-    dispatch(getAllActivities())
-  }, [dispatch])
+    dispatch(getAll());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(getAllActivities());
+  }, [dispatch]);
 
   return (
     <div className={style.container}>
@@ -104,7 +104,7 @@ function Home () {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Home
+export default Home;
