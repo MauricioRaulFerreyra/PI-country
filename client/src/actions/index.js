@@ -1,4 +1,5 @@
-const axios = require("axios").default;
+//const axios = require("axios").default;
+import axios from "axios"; 
 
 export const getAll = () => {
   return async function (dispatch) {

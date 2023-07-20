@@ -10,6 +10,7 @@ import SearchCountry from "../searchCountry/SearchCountry";
 import FilterByContinents from "../filterByContinents/FilterByContinents";
 import CreateActivities from "../createActivity/CreateActivities";
 import NavBar from "../navbar/NavBar";
+import LazyLoad from "react-lazyload";
 
 function Home() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [countriesPerPage] = useState(10);
   const [order, setOrder] = useState("");
-  
+
   const indexLast = currentPage * countriesPerPage;
   const indexFirst = indexLast - countriesPerPage;
   currentCountries = countries && countries.slice(indexFirst, indexLast);
@@ -47,6 +48,7 @@ function Home() {
 
   return (
     <div className={style.container}>
+      <LazyLoad> 
       <NavBar setCurrentPage={setCurrentPage} setOrder={setOrder} />
 
       <div className={style.containerInferior}>
@@ -60,28 +62,13 @@ function Home() {
 
         <div className={style.containerInferiorSub2}>
           <div className={style.containerPaginated}>
-            <Paginated
-              countriesPage={countriesPerPage}
-              countries={countries && countries.length}
-              pagination={pagination}
-            />
+            <Paginated countriesPage={countriesPerPage} countries={countries && countries.length} pagination={pagination} />
           </div>
 
-          <div
-            className={
-              currentCountries.length < 3 ? style.flexContainer : style.grid
-            }
-          >
+          <div className={currentCountries.length < 3 ? style.flexContainer : style.grid}>
             {currentCountries.length > 0 ? (
-              currentCountries.map((el, i) => (
-                <Card
-                  key={i}
-                  id={el.id}
-                  image={el.image}
-                  name={el.name}
-                  continent={el.continent}
-                />
-              ))
+              currentCountries.map((el, i) =>
+                  <Card  key={i} id={el.id} image={el.image} name={el.name} continent={el.continent} />)
             ) : (
               <div className={styleloading.containerLoading}>
                 <div className={styleloading.ldsSpinner}>
@@ -103,6 +90,7 @@ function Home() {
           </div>
         </div>
       </div>
+    </LazyLoad>
     </div>
   );
 }
