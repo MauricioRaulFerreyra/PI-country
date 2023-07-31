@@ -15,7 +15,7 @@ function Card({ id, image, name, continent }) {
           <h4 className={style.title}>{name}</h4>
         </div>
         <div className={style.containerImagen}>
-          <img className={style.imagen} src={image[0]} alt={name} />
+          <img className={style.imagen} src={image} alt={name} />
           {/* <img className={style.imagen} alt={name} /> */}
         </div>
         <div className={style.containerSubtitle}>

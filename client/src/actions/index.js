@@ -1,12 +1,9 @@
-//const axios = require("axios").default;
-import axios from "axios"; 
+import axios from "axios";
 
 export const getAll = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        `https://api-countries-pi.onrender.com/countries`
-      );
+      const response = await axios.get("https://apicountries-production.up.railway.app/countries");
       return dispatch({
         type: "GET_ALL_COUNTRIES",
         payload: response.data,
@@ -28,9 +25,8 @@ export const searchByName = (name) => {
   if (name) {
     return async function (dispatch) {
       try {
-        const response = await axios.get(
-          `https://api-countries-pi.onrender.com/countries?name=${name}`
-        );
+        const response = await axios.get(`https://apicountries-production.up.railway.app/countries?name=${name}`);
+
         if (response.data.status === 404) {
           dispatch({
             type: "NOT_FOUND",
@@ -66,10 +62,7 @@ export function orderByPopulation(value) {
 export const postActivity = (activity) => {
   return function () {
     try {
-      const newActivity = axios.post(
-        "https://api-countries-pi.onrender.com/activities",
-        activity
-      );
+      const newActivity = axios.post("https://apicountries-production.up.railway.app/activities", activity);
       return newActivity;
     } catch (error) {
       return console.error(error);
@@ -80,9 +73,7 @@ export const postActivity = (activity) => {
 export const getAllActivities = () => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(
-        "https://api-countries-pi.onrender.com/activities"
-      );
+      const response = await axios.get("https://apicountries-production.up.railway.app/activities");
       return dispatch({
         type: "GET_ALL_ACTIVITIES",
         payload: response.data,
@@ -102,9 +93,7 @@ export function filterByActivity(activity) {
 
 export const filterById = (id) => {
   return async function (dispatch) {
-    const response = await fetch(
-      `https://api-countries-pi.onrender.com/countries/${id}`
-    );
+    const response = await fetch(`https://apicountries-production.up.railway.app//countries/${id}`);
     const data = await response.json();
     return dispatch({
       type: "FILTER_BY_ID",
