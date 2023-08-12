@@ -8,8 +8,8 @@
   <img height="200" src="./countries.png" />
 </p>
 
-<p>
-    <img height="200" src"./vista-home.png" />
+<p align="left">
+    <img height="200" src="./vista-home.png" />
 </p>
 
 # link : https://pi-country.vercel.app/
