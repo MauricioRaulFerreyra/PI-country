@@ -4,12 +4,14 @@
 
 # Individual Project 
 
-<p align="left">
-  <img height="200" src="./countries.png" />
+<p>
+  <img src="./vista-home.png" />
 </p>
-
-<p align="left">
-    <img height="200" src="./vista-home.png" />
+<p>
+  <img src="./vista-creacion-actividad.png" />
+</p>
+<p>
+  <img src="./vista-individual.png" />
 </p>
 
 # link : https://pi-country.vercel.app/
