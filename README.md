@@ -4,36 +4,42 @@
 
 # Individual Project 
 
-<p align="left">
-  <img height="200" src="./countries.png" />
+<p>
+  <img src="./vista-home.png" />
+</p>
+<p>
+  <img src="./vista-creacion-actividad.png" />
+</p>
+<p>
+  <img src="./vista-individual.png" />
 </p>
 
 # link : https://pi-country.vercel.app/
 
-## Objetivos del Proyecto
+## Project Objectives
 
-- Construir una App utlizando React, Redux, Node y Sequelize.
-- Afirmar y conectar los conceptos aprendidos en la carrera.
-- Aprender mejores prácticas.
-- Aprender y practicar el workflow de GIT.
+- Build an App using React, Redux, Node and Sequelize.
+- Affirm and connect the concepts learned in the race.
+- Learn best practices.
 
-## Enunciado
+## Statement
 
-La idea general es crear una aplicación en la cual se pueda ver información de  distintos paises utilizando la api externa [restcountries](https://restcountries.com/) y a partir de ella poder, entre otras cosas:
+The general idea is to create an application in which you can see information from different countries using the external api
+ [restcountries](https://restcountries.com/) and from it to be able, among other things:
 
-  - Buscar paises
-  - Filtrarlos / Ordenarlos
-  - Crear actividades turísticas
+- Search countries
+- - Filter / Sort them
+- Create tourist activities
 
 
-### Endpoints/Flags que pueden utilizar
+### Endpoints/Flags that they can use
 
   - GET https://restcountries.com/v3/all
   - GET https://restcountries.com/v3/name/{name}
   - GET https://restcountries.com/v3/alpha/{code}
 
 
-#### Tecnologías necesarias:
+#### Required technologies:
 - [ ] React
 - [ ] Redux
 - [ ] Express
@@ -41,80 +47,80 @@ La idea general es crear una aplicación en la cual se pueda ver información de
 
 #### Frontend
 
-Se debe desarrollar una aplicación de React/Redux que contenga las siguientes pantallas/rutas.
+A React/Redux app should be developed that contains the following screens/routes.
 
-__Pagina inicial__: deben armar una landing page con
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+__Initial page__: they must create a landing page with
+- [ ] Some representative background image to the project
+- [ ] Button to enter home (`Main Path`)
 
-__Ruta principal__: debe contener
-- [ ] Input de búsqueda para encontrar países por nombre
-- [ ] Área donde se verá el listado de países. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta `GET /countries` y deberá mostrar su:
-  - Imagen de la bandera
-  - Nombre
-  - Continente
-- [ ] Botones/Opciones para filtrar por continente y por tipo de actividad turística
-- [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente los países por orden alfabético y por cantidad de población
-- [ ] Paginado para ir buscando y mostrando los siguientes paises, 10 paises por pagina, mostrando los primeros 9 en la primer pagina.
+__Main path__: must contain
+- [ ] Search input to find countries by name
+- [ ] Area where the list of countries will be seen. When starting, you must load the first results obtained from the route `GET /countries` and you must show your:
+  - flag image
+  - Name
+  - Continet
+- [ ] Buttons/Options to filter by continent and by type of tourist activity
+- [ ] Buttons/Options to sort both ascending and descending countries by alphabetical order and by amount of population
+- [ ] Paging to search and display the following countries, 10 countries per page, showing the first 9 on the first page.
 
-__Ruta de detalle de país__: debe contener
-- [ ] Los campos mostrados en la ruta principal para cada país (imagen de la bandera, nombre, código de país de 3 letras y continente)
-- [ ] Código de país de 3 letras (id)
+__Country Detail Path__ - Must contain
+- [ ] The fields displayed in the main path for each country (flag image, name, 3-letter country code, and continent)
+- [ ] 3 letter country code (id)
 - [ ] Capital
 - [ ] Subregión
-- [ ] Área (Mostrarla en km2 o millones de km2)
-- [ ] Población
-- [ ] Actividades turísticas con toda su información asociada
+- [ ] Area (Show it in km2 or million km2)
+- [ ] Population
+- [ ] Tourist activities with all their associated information
 
-__Ruta de creación de actividad turística__: debe contener
-- [ ] Un formulario __controlado con JavaScript__ con los siguientes campos:
-  - Nombre
-  - Dificultad
-  - Duración
-  - Temporada
-- [ ] Posibilidad de seleccionar/agregar varios países en simultáneo
-- [ ] Botón/Opción para crear una nueva actividad turística
+__Tourist activity creation route__: must contain
+- [ ] A __JavaScript controlled__ form with the following fields:
+  - Name
+  - Difficulty
+  - Duration
+  - Season
+- [ ] Possibility to select/add several countries simultaneously
+- [ ] Button/Option to create a new tourist activity
 
 
-#### Base de datos
+#### Database
 
-El modelo de la base de datos deberá tener las siguientes entidades (Aquellas propiedades marcadas con asterísco deben ser obligatorias):
+The database model must have the following entities (Those properties marked with an asterisk must be mandatory):
 
-- [ ] País con las siguientes propiedades:
-  - ID (Código de 3 letras) *
-  - Nombre *
-  - Imagen de la bandera *
-  - Continente *
+- [ ] Country with the following properties:
+  - ID (3 letter code) *
+  - Name *
+  - flag image *
+  - Continent *
   - Capital *
   - Subregión
   - Área
-  - Población
-- [ ] Actividad Turística con las siguientes propiedades:
+  - Population
+- [ ] Tourist Activity with the following properties:
   - ID
-  - Nombre
-  - Dificultad (Entre 1 y 5)
-  - Duración
-  - Temporada (Verano, Otoño, Invierno o Primavera)
+  - Name
+  - Difficulty (Between 1 and 5)
+  - Duration
+  - Season (Summer, Autumn, Winter or Spring)
 
-La relación entre ambas entidades debe ser de muchos a muchos ya que un país puede contener varias actividades turísticas y, a su vez, una actividad turística puede darse en múltiples países. Por ejemplo una actividad podría ser "Ski" que podría ocurrir en Argentina y también en Estados Unidos, pero a su vez Argentina podría también incluir "Rafting".
+The relationship between both entities must be many-to-many since a country can contain several tourist activities and, in turn, a tourist activity can take place in multiple countries. For example, an activity could be "Ski" which could take place in Argentina and also in the United States, but Argentina could also include "Rafting".
 
 #### Backend
 
-Se debe desarrollar un servidor en Node/Express con las siguientes rutas:
+A server must be developed in Node/Express with the following paths:
 
 - [ ] __GET /countries__:
-  - En una primera instancia deberán traer todos los países desde restcountries y guardarlos en su propia base de datos y luego ya utilizarlos desde allí (Debe almacenar solo los datos necesarios para la ruta principal)
-  - Obtener un listado de los paises.
+  - In the first instance, they must bring all the countries from restcountries and save them in their own database and then use them from there (You must store only the necessary data for the main route)
+  - Get a list of countries.
 - [ ] __GET /countries/{idPais}__:
-  - Obtener el detalle de un país en particular
-  - Debe traer solo los datos pedidos en la ruta de detalle de país
-  - Incluir los datos de las actividades turísticas correspondientes
+  - Get the detail of a particular country
+  - You must bring only the data requested in the country detail route
+  - Include the data of the corresponding tourist activities
 - [ ] __GET /countries?name="..."__:
-  - Obtener los países que coincidan con el nombre pasado como query parameter (No necesariamente tiene que ser una matcheo exacto)
-  - Si no existe ningún país mostrar un mensaje adecuado
+  - Get the countries that match the name passed as a query parameter (does not necessarily have to be an exact match)
+  - If no country exists display an appropriate message
 - [ ] __POST /activity__:
-  - Recibe los datos recolectados desde el formulario controlado de la ruta de creación de actividad turística por body
-  - Crea una actividad turística en la base de datos
+  - Receives the data collected from the controlled form of the tourist activity creation route by body
+  - Create a tourist activity in the database
 
 
 
