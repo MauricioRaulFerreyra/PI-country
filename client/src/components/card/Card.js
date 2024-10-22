@@ -2,7 +2,7 @@ import React from "react";
 import style from "./card.module.css";
 import { useHistory } from "react-router-dom";
 
-function Card({ id, image, name, continent }) {
+function Card({ id, image, name, continent,population }) {
   const history = useHistory();
   function handleDetail(id) {
     history.push(`/detail/${id}`);
@@ -21,6 +21,9 @@ function Card({ id, image, name, continent }) {
         <div className={style.containerSubtitle}>
           <h6 className={style.subTitle}>{continent}</h6>
         </div>
+        {/* <div className={style.containerSubtitle}>
+          <h6 className={style.subTitle}>{population}</h6>
+        </div> */}
       </div>
     </div>
   );

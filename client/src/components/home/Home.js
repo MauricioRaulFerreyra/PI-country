@@ -46,6 +46,8 @@ function Home() {
     dispatch(getAllActivities());
   }, [dispatch]);
 
+  // console.log(countries)
+
   return (
     <div className={style.container}>
       <LazyLoad> 
@@ -68,7 +70,8 @@ function Home() {
           <div className={currentCountries.length < 3 ? style.flexContainer : style.grid}>
             {currentCountries.length > 0 ? (
               currentCountries.map((el, i) =>
-                  <Card  key={i} id={el.id} image={el.image} name={el.name} continent={el.continent} />)
+                  <Card  key={i} id={el.id} image={el.image} name={el.name}
+               continent={el.subregion} population={el.population} />)
             ) : (
               <div className={styleloading.containerLoading}>
                 <div className={styleloading.ldsSpinner}>

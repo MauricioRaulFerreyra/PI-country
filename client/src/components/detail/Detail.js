@@ -19,6 +19,8 @@ function Detail() {
     history.push("/home");
   };
 
+  console.log(country)
+
   return (
     <>
       {country && (
